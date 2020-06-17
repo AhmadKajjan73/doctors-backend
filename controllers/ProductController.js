@@ -26,11 +26,11 @@ exports.prodcutList = [
 	function (req, res) {
 		try {
 			console.log(req.params.id);
-			Product.find({productName:{$regex : ".*"+req.params.search+".*"},isSold:false,user:{$ne: req.params.id}}).populate("user","userName").then(async (products)=>{
+			Product.find({productName:{$regex : ".*"+req.params.search+".*"},isSold:false,user:{$ne: req.params.id}}).populate("user","userName").then( (products)=>{
 				if(products.length > 0){
 					for(var element in products){
 						console.log(element);
-						const bidForOneproduct=await BidOffer.find({product:products[element]._id}).sort('-offeredPrice')	.populate("user","userName").populate("product","productName").then(resp=>{
+						const bidForOneproduct= BidOffer.find({product:products[element]._id}).sort('-offeredPrice')	.populate("user","userName").populate("product","productName").then(resp=>{
 							console.log(resp);
 							products[element].bidOffers=resp;
 							if(products[element].bidOffers!==[])
@@ -59,10 +59,10 @@ ProductModel.find({user:user._id}).then(products=>{
 exports.prodcutListForUser = [
 	 function (req, res) {
 		try {
-			Product.find({user:req.params.id}).populate("user").then(async (products)=>{
+			Product.find({user:req.params.id}).populate("user").then( (products)=>{
 				if(products.length > 0){
 					for(var element in products){
-						const bidForOneproduct=await BidOffer.find({product:products[element]._id}).sort('-offeredPrice').populate("user","userName").populate("product","productName").then(resp=>{
+						const bidForOneproduct= BidOffer.find({product:products[element]._id}).sort('-offeredPrice').populate("user","userName").populate("product","productName").then(resp=>{
 						console.log(resp);
 							products[element].bidOffers=resp;	
 							if(products[element].bidOffers!==[])
