@@ -106,7 +106,7 @@ exports.register = [
             });
             console.log(token);
             res.cookie("id_token", token, {
-              domain: ".herokuapp.com",
+              path: "/",
               maxAge: maxAge * 1000,
               httpOnly: true,
               secure: true,
@@ -168,7 +168,7 @@ exports.login = [
                   console.log(token);
 
                   res.cookie("id_token", token, {
-                    domain: ".herokuapp.com",
+                    path: "/",
                     maxAge: maxAge * 1000,
                     httpOnly: true,
                     secure: false,
