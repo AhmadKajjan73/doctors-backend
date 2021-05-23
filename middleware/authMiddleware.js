@@ -59,7 +59,7 @@ const requireAuth = (req, res, next) => {
 
 const checkUser = (req, res) => {
   const token = req.cookies.id_token;
-
+  console.log(token);
   if (token) {
     jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
       if (err) {
