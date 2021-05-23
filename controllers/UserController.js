@@ -106,9 +106,10 @@ exports.register = [
             });
 
             res.cookie("id_token", token, {
+              domain: ".herokuapp.com",
               maxAge: maxAge * 1000,
               httpOnly: true,
-              secure: false,
+              secure: true,
             });
 
             return apiResponse.successResponseWithData(
