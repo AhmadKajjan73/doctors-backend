@@ -106,10 +106,10 @@ exports.register = [
             });
 
             res.cookie("id_token", token, {
-              sameSite: "None",
               maxAge: maxAge * 1000,
               httpOnly: true,
               secure: true,
+              sameSite: "none",
             });
 
             return apiResponse.successResponseWithData(
@@ -167,11 +167,10 @@ exports.login = [
                   });
 
                   res.cookie("id_token", token, {
-                    sameSite: "None",
-
                     maxAge: maxAge * 1000,
                     httpOnly: true,
                     secure: false,
+                    sameSite: "none",
                   });
                   return apiResponse.successResponseWithData(
                     res,
