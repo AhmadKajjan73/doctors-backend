@@ -104,7 +104,7 @@ exports.register = [
             const token = jwt.sign(userInfo, process.env.JWT_SECRET, {
               expiresIn: maxAge,
             });
-
+            console.log(token);
             res.cookie("id_token", token, {
               domain: ".herokuapp.com",
               maxAge: maxAge * 1000,
@@ -165,8 +165,10 @@ exports.login = [
                   const token = jwt.sign(userInfo, process.env.JWT_SECRET, {
                     expiresIn: maxAge,
                   });
+                  console.log(token);
 
                   res.cookie("id_token", token, {
+                    domain: ".herokuapp.com",
                     maxAge: maxAge * 1000,
                     httpOnly: true,
                     secure: false,
