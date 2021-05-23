@@ -1,16 +1,23 @@
 var mongoose = require("mongoose");
 
-var Schema = mongoose.Schema;
-var UserSchema = new mongoose.Schema({
-	userName: {type: String, required: true},
-	phoneNumber: {type: String, required: true},
-	password: {type: String, required: true},
-	login: {type: Boolean, required: true, default: 0},
-	products:[{
-		type:Schema.Types.ObjectId,
-		ref:"Product"
-	}]
-}, {timestamps: true});
+const Schema = mongoose.Schema;
+
+var UserSchema = new Schema(
+  {
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    password: { type: String, required: true },
+    phoneNumber: { type: String, required: true },
+    email: { type: String, required: true },
+    age: { type: Number, required: true },
+    gender: { type: String, required: true },
+    usertype: { type: Number, required: true },
+    profilePhoto: { type: String, required: true },
+  },
+  {
+    timestamps: true,
+  }
+);
 
 // Virtual for user's full name
 
