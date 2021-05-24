@@ -109,7 +109,6 @@ exports.register = [
               maxAge: maxAge * 1000,
               httpOnly: true,
               secure: true,
-              sameSite: "none",
             });
 
             return apiResponse.successResponseWithData(
@@ -170,7 +169,6 @@ exports.login = [
                     maxAge: maxAge * 1000,
                     httpOnly: true,
                     secure: true,
-                    sameSite: "none",
                   });
                   return apiResponse.successResponseWithData(
                     res,
