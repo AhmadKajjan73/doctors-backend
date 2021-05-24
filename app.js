@@ -42,6 +42,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 //To allow cross-origin requests
+app.use(cors());
 app.use(function (req, res, next) {
   res.setHeader(
     "Access-Control-Allow-Headers",
