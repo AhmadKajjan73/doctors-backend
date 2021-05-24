@@ -1,6 +1,6 @@
 const User = require("../models/UserModel");
 const apiResponse = require("../helpers/apiResponse");
-
+var cookie = require("cookie");
 const { body, validationResult } = require("express-validator");
 const { sanitizeBody } = require("express-validator");
 const bcrypt = require("bcrypt");
@@ -166,18 +166,22 @@ exports.login = [
                     expiresIn: maxAge,
                   });
 
-                  res.cookie("id_token", token, {
-                    maxAge: maxAge * 1000,
-                    httpOnly: true,
-                    secure: true,
-                    sameSite: "none",
-                  });
+                  // res.cookie("id_token", token, {
+                  //   maxAge: maxAge * 1000,
+                  //   httpOnly: true,
+                  //   secure: true,
+                  //   sameSite: "none",
+                  // });
 
-                  // res.setHeader("set-cookie", [
-                  //   `id_token=${token};SameSite=None;HttpOnly;Secure;Max-Age=${
-                  //     maxAge * 1000
-                  //   };`,
-                  // ]);
+                  res.setHeader(
+                    "set-cookie",
+                    cookie.serialize("id_token", token, {
+                      maxAge: maxAge * 1000,
+                      httpOnly: true,
+                      secure: true,
+                      sameSite: "none",
+                    })
+                  );
                   return apiResponse.successResponseWithData(
                     res,
                     "Login Success.",
