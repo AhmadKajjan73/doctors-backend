@@ -172,7 +172,10 @@ exports.login = [
                   //   secure: true,
                   //   sameSite: "none",
                   // });
-
+                  res.setHeader(
+                    "Access-Control-Allow-Origin",
+                    "https://doctors-frontend-svu.herokuapp.com/"
+                  );
                   res.setHeader(
                     "set-cookie",
                     cookie.serialize("id_token", token, {
