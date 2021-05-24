@@ -174,7 +174,7 @@ exports.login = [
                     sameSite: "none",
                   };
 
-                  cookies.set("id_token", value, options);
+                  cookies.set("id_token", token, options);
                   return apiResponse.successResponseWithData(
                     res,
                     "Login Success.",
