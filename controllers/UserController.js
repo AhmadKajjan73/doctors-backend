@@ -165,19 +165,8 @@ exports.login = [
                   const token = jwt.sign(userInfo, process.env.JWT_SECRET, {
                     expiresIn: maxAge,
                   });
-
-                  // res.cookie("id_token", token, {
-                  //   maxAge: maxAge * 1000,
-                  //   httpOnly: true,
-                  //   secure: true,
-                  //   sameSite: "none",
-                  // });
-                  res.setHeader(
-                    "Access-Control-Allow-Origin",
-                    "https://doctors-frontend-svu.herokuapp.com/"
-                  );
-                  res.setHeader(
-                    "set-cookie",
+                  console.log(token);
+                  res.cookie(
                     cookie.serialize("id_token", token, {
                       maxAge: maxAge * 1000,
                       httpOnly: true,
@@ -185,6 +174,7 @@ exports.login = [
                       sameSite: "none",
                     })
                   );
+
                   return apiResponse.successResponseWithData(
                     res,
                     "Login Success.",
