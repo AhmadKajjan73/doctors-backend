@@ -165,18 +165,18 @@ exports.login = [
                     expiresIn: maxAge,
                   });
 
-                  // res.cookie("id_token", token, {
-                  //   maxAge: maxAge * 1000,
-                  //   httpOnly: true,
-                  //   secure: true,
-                  //   sameSite: "none",
-                  // });
+                  res.cookie("id_token", token, {
+                    maxAge: maxAge * 1000,
+                    httpOnly: true,
+                    secure: true,
+                    // sameSite: "none",
+                  });
 
-                  res.setHeader("set-cookie", [
-                    `id_token=${token};SameSite=None;HttpOnly;Secure;Max-Age=${
-                      maxAge * 1000
-                    };`,
-                  ]);
+                  // res.setHeader("set-cookie", [
+                  //   `id_token=${token};SameSite=None;HttpOnly;Secure;Max-Age=${
+                  //     maxAge * 1000
+                  //   };`,
+                  // ]);
                   return apiResponse.successResponseWithData(
                     res,
                     "Login Success.",
