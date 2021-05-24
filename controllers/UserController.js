@@ -1,6 +1,5 @@
 const User = require("../models/UserModel");
 const apiResponse = require("../helpers/apiResponse");
-var cookie = require("cookie");
 const { body, validationResult } = require("express-validator");
 const { sanitizeBody } = require("express-validator");
 const bcrypt = require("bcrypt");
