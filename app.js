@@ -44,7 +44,11 @@ app.use(express.static(path.join(__dirname, "public")));
 //To allow cross-origin requests
 app.use(cors());
 app.use(
-  cors({ origin: true, credentials: true, allowedHeaders: ["content-type"] })
+  cors({
+    origin: true,
+    credentials: true,
+    allowedHeaders: ["Origin", "X-Requested-With", " Content-Type", "Accept"],
+  })
 );
 
 //Route Prefixes

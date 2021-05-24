@@ -11,9 +11,7 @@
   "dependencies": {
     "bcrypt": "^3.0.6",
     "codacy-coverage": "^3.4.0",
-    "cookie": "^0.4.1",
     "cookie-parser": "^1.4.5",
-    "cookies": "^0.8.0",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",

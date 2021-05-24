@@ -1,6 +1,6 @@
 const User = require("../models/UserModel");
 const apiResponse = require("../helpers/apiResponse");
-var Cookies = require("cookies");
+var cookie = require("cookie");
 const { body, validationResult } = require("express-validator");
 const { sanitizeBody } = require("express-validator");
 const bcrypt = require("bcrypt");
@@ -165,16 +165,19 @@ exports.login = [
                   const token = jwt.sign(userInfo, process.env.JWT_SECRET, {
                     expiresIn: maxAge,
                   });
-                  const cookies = new Cookies(req, res);
-                  console.log(token);
-                  const options = {
+
+                  res.cookie("id_token", token, {
                     maxAge: maxAge * 1000,
                     httpOnly: true,
-
+                    secure: true,
                     sameSite: "none",
-                  };
+                  });
 
-                  cookies.set("id_token", token, options);
+                  // res.setHeader("set-cookie", [
+                  //   `id_token=${token};SameSite=None;HttpOnly;Secure;Max-Age=${
+                  //     maxAge * 1000
+                  //   };`,
+                  // ]);
                   return apiResponse.successResponseWithData(
                     res,
                     "Login Success.",
