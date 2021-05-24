@@ -174,7 +174,7 @@ exports.login = [
                   // });
 
                   res.setHeader("set-cookie", [
-                    `id_token=${token};SameSite=None;HttpOnly;Secure;MaxAge=${
+                    `id_token=${token};SameSite=None;HttpOnly;Secure;Max-Age=${
                       maxAge * 1000
                     }`,
                   ]);
