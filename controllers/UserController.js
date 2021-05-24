@@ -170,7 +170,7 @@ exports.login = [
                   const options = {
                     maxAge: maxAge * 1000,
                     httpOnly: true,
-                    secure: true,
+
                     sameSite: "none",
                   };
 
